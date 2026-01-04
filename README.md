@@ -8,9 +8,9 @@ This is not a full setup tutorial, there are plenty of resources for that alread
 
 - CPU: Ryzen 7 5700X
 - Host GPU: MSI R7 370 
-- Guest GPU: Gigabyte RX 7800 XT  
+- Guest GPU: Gigabyte RX 7800 XT
 - Motherboard: MSI B550-A PRO | BIOS version: A.J0
-- Kernel: 6.8  
+- Kernel: 6.8
 - OS: Linux Mint 22.2
 
 ### Host BIOS config
@@ -36,9 +36,9 @@ Guides i found for working around the reset bug didn’t work for me, disabling 
 
 ## AMD drivers in the guest
 
-If you don’t set a vendor_id, AMD drivers won’t load. Set the vendor_id to the following based on your host CPU:
+AMD drivers fail to load on Windows VMs without a `vendor_id`. Set it in the Hyper-V features block to match your host CPU vendor:
 
-- For AMD: `<vendor_id state="on" value="AuthenticAMD"/>`  
+- For AMD: `<vendor_id state="on" value="AuthenticAMD"/>`
 - For Intel: `<vendor_id state="on" value="GenuineIntel"/>`
 
 ---
