@@ -22,7 +22,15 @@ This is not a full setup tutorial, there are plenty of resources for that alread
 
 ## The reset bug workaround
 
-Guides i found for working around the reset bug didn’t work for me, disabling ROM BAR and/or using a dummy VBIOS didn’t stop the host from crashing on VM shutdown, although it did prevent the host from crashing on VM startup. What worked for me was:
+To use either method 1 or method 2, you must first disable the ROM BAR for both the GPU and its audio function in your VM XML, and for method 2 you must also provide a dummy VBIOS. Otherwise, the host may crash when starting the VM.
+
+### Method 1:
+
+A port of vendor-reset was made for the 7800XT: https://github.com/matthias-z/vendor-reset/tree/navi-32
+
+Additional info can be found in it's forked repo: https://github.com/lok0919/vendor-reset/tree/navi-32
+
+### Method 2:
 
 - Close all programs in the guest OS.
 
@@ -31,6 +39,8 @@ Guides i found for working around the reset bug didn’t work for me, disabling 
 - Shut down the VM
 
 - If needed, rebind the GPU to vfio-pci with rebind.sh (run as root)
+
+Use this if method 1 fails or isn't stable.
 
 ---
 
